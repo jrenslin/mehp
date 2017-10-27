@@ -10,6 +10,7 @@ Moving to a HiDPI screen, libreoffice impress started to break every time I open
 
 - Switch between text mode and presentation mode
 - <aside> tags can be used for notes or the element's full text for the text mode version of a presentation (thanks to reveal.js for the idea)
+- Table of contents
 - Simple speaker view
 
 ## Themes

@@ -43,13 +43,16 @@
 body { background: #25262e; color: #EDE4D5; font-family: Quicksand; }
 
 h1, h2, h3, h4, h5, h6       { font-weight: normal; }
-a                            { color: #FC7921; }
+a                            { color: #FC7921; text-decoration: none; }
 body.presentation aside      { animation: fade-in 0.4s; background: #5E5E5E; padding: 3vh 3vw !important;
                                border: 0.3em solid #8E8238; }
+
 body > div#help              { animation: fade-in 0.4s;  }
 body > div#options           { background: rgba(255,255,255, 0.1); border-radius: 0.3em 0.3em 0px 0px; }
 body > div#options > *       { border: 0.2em solid rgba(0,0,0,0); }
 body > div#options > *:hover { border-bottom-color: #FC7921; }
+body > div#toc               { animation: fade-in 0.6s; background: #4E4E4E; border-right: 0.4em solid #F29901; }
+body > div#toc > a:hover     { color: #C14E4B; }
 
 body.text > section          { position: relative; }
 body.text > section:before   { content: " "; display:block; width: 5em; height: 1px; margin: 5vh 0%;

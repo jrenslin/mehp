@@ -41,10 +41,36 @@ function mehp () {
         }
     }
 
+    function createToC (element) {
+
+        var headlines = ["H2", "H3", "H4"];
+
+        // Set ids to all sections
+        for (var i = 0, max = allSections.length; i < max; i++) {
+            var children = allSections[i].children;
+            for (var j = 0, maxj = children.length; j < maxj; j++) {
+                if (headlines.indexOf(children[j].tagName) != -1) {
+
+                    console.log(j);
+                    var toAdd       = document.createElement("a");
+                    toAdd.href      = "#" + allSections[i].id;
+                    toAdd.classList = children[j].tagName;
+                    toAdd.innerHTML = children[j].innerHTML;
+                    element.appendChild(toAdd);
+
+                }
+            }
+        }
+
+
+    }
+
     function initializeIDsStyles() {
 
-        // Add help to body
+        // Bind body to variable. Used all the time here anyway.
         var body = document.getElementsByTagName("body")[0];
+
+        // Add help to body
         var helpDiv = document.createElement("div");
         helpDiv.id = "help";
         helpDiv.innerHTML = helpText;
@@ -93,6 +119,15 @@ function mehp () {
             });
         }
 
+        // Bind ToC to options
+        var optionsOpenerToC = document.createElement("div");
+        optionsOpenerToC.id = "optionsOpenerToC";
+        optionsDiv.appendChild(optionsOpenerToC);
+
+        optionsOpenerToC.addEventListener('click', function (e) {
+            toggleStyleDisplay(document.getElementById('toc'));
+        });
+
         // Bind help to options
         var optionsOpenerHelp = document.createElement("div");
         optionsOpenerHelp.id = "optionsOpenerHelp";
@@ -106,6 +141,13 @@ function mehp () {
         for (var i = 0, max = allSections.length; i < max; i++) {
             allSections[i].id = i.toString();
         }
+
+        // Add table of contents to body
+        var toc = document.createElement("div");
+        toc.id = "toc";
+        body.appendChild(toc);
+
+        createToC (toc); // Run function to create the ToC
 
         // Get all elements containing an aside element
         // and set class to them to mark them.
@@ -151,7 +193,12 @@ function mehp () {
                     return;
                 }
                 switch (e.keyCode) {
+                case  75:
+                    e.preventDefault();
+                    toggleStyleDisplay(document.getElementById('toc'));
+                    break;
                 case  77:
+                    e.preventDefault();
                     toggleTextPresentationMode();
                     break;
                 case  79:
@@ -231,6 +278,8 @@ function mehp () {
     <dl>
         <dt><kbd>Left</kbd> / <kbd>Right</kbd></dt><dd>Go to previous / next slide</dd>
         <dt><kbd>CTRL+M</kbd></dt><dd>Switch between text and presentation modes</dd>
+        <dt><kbd>CTRL+K</kbd></dt><dd>Toggle table of contents</dd>
+        <dt><kbd>CTRL+O</kbd></dt><dd>Toggle Options</dd>
         <dt><kbd>F1</kbd></dt><dd>Show this help page</dd>
         <dt><kbd>F11</kbd></dt><dd>Open speaker view</dd>
         <dt><kbd>Escape</kbd></dt><dd>Close speaker view</dd>
