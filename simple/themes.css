@@ -1,0 +1,43 @@
+/* ---------
+|  Themes
+|
+|  Here, there is space for additional styles that can be used for theming.
+|  If you want a single slide design, maybe setting a new design to the body tag is enough.
+|  Else, set per section styles.
+|----------- */
+
+/* ---------
+|  Fonts
+|----------- */
+
+/* ---------
+|  Body
+|
+|  General modifications should be set here.
+|----------- */
+
+body {}
+
+body.presentation > section       {  }
+body.presentation > section > *   {  }
+
+/* ---------
+|  Sections / Slide Layouts
+|----------- */
+
+body.presentation > section.oneElement > *         {  }
+body.presentation > section.oneElementHeadline > * {  }
+body.presentation > section.twoElementHeadline > * {  }
+
+/* ---------
+|  Sections / Slide Layouts
+|
+|  e.g. body.presentation > section.AlternativeBG { background: #fa0; }
+|----------- */
+
+/* ---------
+|  Animations
+|
+|  If you need animations, set them here.
+|----------- */
+

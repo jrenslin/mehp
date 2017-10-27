@@ -1,0 +1,89 @@
+/* ---------
+|  Seoul Alternative Theme
+|
+|  Based on a subset of the colorscheme of the City of Seoul.
+|
+|  Colors:
+|
+|  - Background :: #25262e
+|  - Color0     :: #5E5E5E
+|  - Color1     :: #C14E4B
+|  - Color2     :: #A4A501
+|  - Color3     :: #F7B65A
+|  - Color4     :: #8DB1E1
+|  - Color5     :: #8F4350
+|  - Color6     :: #3C8282
+|  - Color7     :: #E5D6D1
+|  - Color8     :: #4E4E4E
+|  - Color9     :: #FC7921
+|  - Color10    :: #8E8238
+|  - Color11    :: #F29901
+|  - Color12    :: #589FBF
+|  - Color13    :: #CD919B
+|  - Color14    :: #8FBDBD
+|  - Color15    :: #EDE4D5
+|
+|----------- */
+
+/* ---------
+|  Fonts
+|----------- */
+
+@font-face {
+    font-family: Quicksand;
+    src: url(../fonts/Quicksand-Regular.ttf);
+}
+
+/* ---------
+|  Body
+|
+|  General modifications should be set here.
+|----------- */
+
+body { background: #25262e; color: #EDE4D5; font-family: Quicksand; }
+
+h1, h2, h3, h4, h5, h6    { font-weight: normal; }
+a                         { color: #FC7921; }
+body.presentation aside   { animation: fade-in 0.4s; background: #5E5E5E; padding: 3vh 3vw !important;
+                            border: 0.3em solid #8E8238; }
+body > div#help           { animation: fade-in 0.4s;  }
+
+body.text > section        { position: relative; }
+body.text > section:before { content: " "; display:block; width: 5em; height: 1px; margin: 5vh 0%;
+                             border-bottom: 5px dotted #888; }
+body.text > section:first-child:before { content: initial; }
+
+body.text > section:target:after       { content: " "; position: absolute; right: calc(100% + 2em); top: 5vh; width: 5px; height: calc(100% - 5vh); background: #3C8282; }
+
+aside {display: block;}
+
+body.presentation      { font-size: 5vh; }
+body.presentation > section       {  }
+body.presentation > section > *   {  }
+
+body.presentation .containsAside:hover { background: rgba(255,255,255,0.05); }
+
+/* ---------
+|  Sections / Slide Layouts
+|----------- */
+
+body.presentation > section.oneElement > *         {  }
+body.presentation > section.oneElementHeadline > * {  }
+body.presentation > section.twoElementHeadline > * {  }
+
+/* ---------
+|  Sections / Slide Layouts
+|
+|  e.g. body.presentation > section.AlternativeBG { background: #fa0; }
+|----------- */
+
+/* ---------
+|  Animations
+|
+|  If you need animations, set them here.
+|----------- */
+
+@keyframes fade-in {
+    from {opacity:0.4;}
+    to {opacity:1.0;}
+}

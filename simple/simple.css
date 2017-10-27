@@ -1,0 +1,90 @@
+/* ---------
+|  Outermost elements
+|----------- */
+
+html { margin: 0px; padding: 0px; z-index: 1; }
+body { margin: 0px; padding: 0px; z-index: 1; }
+
+/* ---------
+|  General
+|----------- */
+
+a     {  }
+
+.toggledVisible { display: block !important; z-index: 10 !important; }
+
+/* ---------
+|  General Text Mode Styles
+|----------- */
+
+body.text    { padding: 5vh 20vw; font-size: 1.1em; }
+body.text h1 { font-size: 2em; }
+
+/* ---------
+|  General Presentation Design
+|----------- */
+
+body.presentation > section        { display: none;  width: 100%; height: 100vh; z-index: 1; }
+body.presentation > section:target { display: block; }
+body.presentation > section > *    { position: absolute; margin: 0px; padding: 0px; z-index: 1; }
+
+body.presentation aside {  display: none;
+                           position: absolute; left: 50%; top: 50%; display: none; transform: translate(-50%, -50%);
+                           padding: 4vh 4vw; background: rgba(0, 0, 0, 1); font-size: initial; }
+
+
+/* ---------
+|  Areas for switching back / forth
+|
+|  A click event is bound to these. 
+|----------- */
+
+div#prev, div#next { position: absolute; left: 0px; top: 0px; width: 5%; height: 100%; }
+div#next           { left: initial; right: 0px; }
+
+@media (max-width:55em) {
+    div#prev, div#next { width: 30%; }
+}
+
+/* ---------
+|  Help
+|----------- */
+
+body > div#help              { position: absolute; left: 50%; top: 50%; display: none; transform: translate(-50%, -50%);
+                               padding: 4vh 4vw; background: rgba(0, 0, 0, 1); font-size: initial; }
+body > div#help dl           { display: flex; flex-wrap: wrap; }
+body > div#help dl dt,
+body > div#help dl dt + dd   { flex: 1; margin: 0px; padding: 0.5em; min-width: 10em; border-bottom: 1px solid #ddd; }
+body > div#help dl dt + dd   { min-width: calc(100% - 12em); }
+body > div#help kbd          { background: #eee; color: #000; padding: 0.3em; }
+
+/* ---------
+|  Slide layout
+|
+|  Different slide layouts are set by classes set on sections
+|----------- */
+
+
+/* ---------
+|  Slides with only one element
+|----------- */
+body.presentation > section.oneElement > * { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+                                             margin: 0px; padding: 0px; }
+
+/* ---------
+|  Slides with only one element plus a headline
+|
+|  Headline must be the first element
+|----------- */
+body.presentation > section.oneElementHeadline > *             { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+body.presentation > section.oneElementHeadline > *:first-child { top: 10%; transform: translate(-50%); }
+
+/* ---------
+|  Slides with two elements plus a headline
+|
+|  Headline must be the first element
+|----------- */
+body.presentation > section.twoElementHeadline > *             { left: 25%; top: 50%; transform: translate(-50%, -50%); }
+body.presentation > section.twoElementHeadline > *:first-child { left: 50%; top: 10%; transform: translate(-50%); }
+body.presentation > section.twoElementHeadline > *:last-child  { left: 75%; top: 50%; transform: translate(-50%, -50%); }
+
