@@ -1,5 +1,5 @@
 
-function simple () {
+function mehp () {
 
     function toggleStyleDisplay (element) {
         if (element.classList.contains("toggledVisible")) element.classList.remove("toggledVisible");
