@@ -123,10 +123,10 @@ function mehp () {
                     e.preventDefault();
                     toggleStyleDisplay(document.getElementById('help'));
                     break;
-                case 113:
+                case 122:
                     e.preventDefault();
                     document.getElementsByTagName('body')[0].classList.add("speakerView");
-                    fullscreenWindow = window.open(window.location,'windowName','resizable=1,scrollbars=0,fullscreen=1,height=200,width=300, left=300, toolbar=0, menubar=1,status=0');
+                    fullscreenWindow = window.open(window.location,'windowName','resizable=1,scrollbars=0,fullscreen=1,toolbar=1, menubar=1,status=1');
 
                     fullscreenWindow.addEventListener('keydown', function (e) {
                         if (e.keyCode == 27) {
@@ -185,6 +185,8 @@ function mehp () {
         <dt><kbd>Left</kbd> / <kbd>Right</kbd></dt><dd>Go to previous / next slide</dd>
         <dt><kbd>CTRL+M</kbd></dt><dd>Switch between text and presentation modes</dd>
         <dt><kbd>F1</kbd></dt><dd>Show this help page</dd>
+        <dt><kbd>F11</kbd></dt><dd>Open speaker view</dd>
+        <dt><kbd>Escape</kbd></dt><dd>Close speaker view</dd>
         <dt><kbd>Click on section</kbd></dt><dd>Open notes or text of this section.</dd>
     </dl>
     `;
