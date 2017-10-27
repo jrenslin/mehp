@@ -14,6 +14,7 @@ function simple () {
         case false:
             if (no > 0) {
                 console.log("Opening slide " + no);
+                if (typeof fullscreenWindow != "undefined") fullscreenWindow.location.hash = "#" + (no - 1);
                 window.location.hash = "#" + (no - 1);
             } else {
                 console.log("This is the first slide. No navigating back.");
@@ -26,6 +27,7 @@ function simple () {
             }
             else {
                 console.log("Opening slide " + no);
+                if (typeof fullscreenWindow != "undefined") fullscreenWindow.location.hash = "#" + (no + 1);
                 window.location.hash = "#" + (no + 1);
             }
             break;
@@ -120,6 +122,23 @@ function simple () {
                 case 112:
                     e.preventDefault();
                     toggleStyleDisplay(document.getElementById('help'));
+                    break;
+                case 113:
+                    e.preventDefault();
+                    document.getElementsByTagName('body')[0].classList.add("speakerView");
+                    fullscreenWindow = window.open(window.location,'windowName','resizable=1,scrollbars=0,fullscreen=1,height=200,width=300, left=300, toolbar=0, menubar=1,status=0');
+
+                    fullscreenWindow.addEventListener('keydown', function (e) {
+                        if (e.keyCode == 27) {
+                            document.getElementsByTagName('body')[0].classList.remove("speakerView");
+                            fullscreenWindow.close();
+                            console.log("Closing speaker view.");
+                        }
+                    });
+
+                    console.log("Opened speaker view.");
+
+                    break;
                 }
 
             });
@@ -157,6 +176,7 @@ function simple () {
 
     var allSections  = document.getElementsByTagName("section");
     var asideParents = [];
+    var fullscreenWindow;
 
     var helpText = `
     <h2>Help</h2>
@@ -164,6 +184,8 @@ function simple () {
     <dl>
         <dt><kbd>Left</kbd> / <kbd>Right</kbd></dt><dd>Go to previous / next slide</dd>
         <dt><kbd>CTRL+M</kbd></dt><dd>Switch between text and presentation modes</dd>
+        <dt><kbd>F1</kbd></dt><dd>Show this help page</dd>
+        <dt><kbd>Click on section</kbd></dt><dd>Open notes or text of this section.</dd>
     </dl>
     `;
 

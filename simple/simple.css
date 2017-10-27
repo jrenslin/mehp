@@ -32,6 +32,17 @@ body.presentation aside {  display: none;
                            position: absolute; left: 50%; top: 50%; display: none; transform: translate(-50%, -50%);
                            padding: 4vh 4vw; background: rgba(0, 0, 0, 1); font-size: initial; }
 
+/* ---------
+|  Speaker view
+|----------- */
+
+body.presentation.speakerView { background: #151515; }
+body.presentation.speakerView > section { position: absolute; }
+body.presentation.speakerView > section:target { left: 10%; top: 10%; width: 50%; height: 80vh; font-size: 0.6em; }
+body.presentation.speakerView > section:target + section { display: block; right: 5%; top: 10%;
+                                                           width: 30vw; height: 35%; font-size: 0.4em; }
+body.presentation.speakerView > section:target + section + section { display: block; right: 5%; bottom: calc(10% - 1em);
+                                                                     width: 30vw; height: 35%; font-size: 0.4em; }
 
 /* ---------
 |  Areas for switching back / forth
