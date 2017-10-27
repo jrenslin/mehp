@@ -121,12 +121,22 @@ body.presentation > section.oneElement > * { position: absolute; left: 50%; top:
 body.presentation > section.oneElementHeadline > *             { left: 50%; top: 50%; transform: translate(-50%, -50%); }
 body.presentation > section.oneElementHeadline > *:first-child { top: 10%; transform: translate(-50%); }
 
+
+/* ---------
+|  Slides with two elements and no headline
+|
+|  Headline must be the first element
+|----------- */
+body.presentation > section.twoElements > *               { left: 25%; top: 50%; transform: translate(-50%, -50%); }
+body.presentation > section.twoElements > *:nth-child(2)  { left: 75%; top: 50%; transform: translate(-50%, -50%); }
+
+
 /* ---------
 |  Slides with two elements plus a headline
 |
 |  Headline must be the first element
 |----------- */
-body.presentation > section.twoElementHeadline > *             { left: 25%; top: 50%; transform: translate(-50%, -50%); }
-body.presentation > section.twoElementHeadline > *:first-child { left: 50%; top: 10%; transform: translate(-50%); }
-body.presentation > section.twoElementHeadline > *:last-child  { left: 75%; top: 50%; transform: translate(-50%, -50%); }
+body.presentation > section.twoElementHeadline > *               { left: 25%; top: 50%; transform: translate(-50%, -50%); }
+body.presentation > section.twoElementHeadline > *:first-child   { left: 50%; top: 10%; transform: translate(-50%); }
+body.presentation > section.twoElementHeadline > *:nth-child(2)  { left: 75%; top: 50%; transform: translate(-50%, -50%); }
 
