@@ -6,6 +6,13 @@ function mehp () {
         else element.classList.add("toggledVisible");
     }
 
+    function toggleTextPresentationMode () {
+        if (document.getElementsByTagName('body')[0].className == "presentation")
+            document.getElementsByTagName('body')[0].className = "text";
+        else
+            document.getElementsByTagName('body')[0].className = "presentation";
+    }
+
     function navigateHash(next) {
         var no = window.location.hash;
 		    no = parseInt(no.substr(1));
@@ -43,7 +50,7 @@ function mehp () {
         helpDiv.innerHTML = helpText;
         body.appendChild(helpDiv);
 
-
+        // Add fields for going to previous / next slide to body
         var prevNext = [["prev", function (e) {
             navigateHash(false);
         }], ["next", function (e) {
@@ -58,12 +65,51 @@ function mehp () {
 
         }
 
+        // Add fields for options to page
+        var optionsDiv = document.createElement("div");
+        optionsDiv.id = "options";
+        body.appendChild(optionsDiv);
+
+        // Bind help to options
+        var optionsOpenerTextPresentation = document.createElement("div");
+        optionsOpenerTextPresentation.id = "optionsOpenerTextPresentation";
+        optionsDiv.appendChild(optionsOpenerTextPresentation);
+
+        optionsOpenerTextPresentation.addEventListener('click', function (e) {
+            toggleTextPresentationMode();
+            });
+
+        // Check if the presentation is embedded somewhere.
+        // If so, add option to leave the window.
+
+        // Bind help to options
+        if (self != top) {
+            var optionsOpenerOwnTab = document.createElement("div");
+            optionsOpenerOwnTab.id = "optionsOpenerOwnTab";
+            optionsDiv.appendChild(optionsOpenerOwnTab);
+
+            optionsOpenerOwnTab.addEventListener('click', function (e) {
+                top.location.href = window.location.href;
+            });
+        }
+
+        // Bind help to options
+        var optionsOpenerHelp = document.createElement("div");
+        optionsOpenerHelp.id = "optionsOpenerHelp";
+        optionsDiv.appendChild(optionsOpenerHelp);
+
+        optionsOpenerHelp.addEventListener('click', function (e) {
+            toggleStyleDisplay(document.getElementById('help'));
+        });
+
+        // Set ids to all sections
         for (var i = 0, max = allSections.length; i < max; i++) {
             allSections[i].id = i.toString();
         }
 
+        // Get all elements containing an aside element
+        // and set class to them to mark them.
         var allAsides   = document.getElementsByTagName("aside");
-
         for (var i = 0, max = allAsides.length; i < max; i++) {
             var parent = allAsides[i].parentElement;
             parent.classList.add("containsAside");
@@ -98,7 +144,7 @@ function mehp () {
                 }
             });
 
-            // Bind switcher between text and presentation
+            // Bind switcher between text and presentation and opener for options
             document.getElementsByTagName('body')[0].addEventListener('keydown', function (e) {
 
                 if (!e.ctrlKey) {
@@ -106,14 +152,15 @@ function mehp () {
                 }
                 switch (e.keyCode) {
                 case  77:
-                    if (document.getElementsByTagName('body')[0].className == "presentation")
-                        document.getElementsByTagName('body')[0].className = "text";
-                    else
-                        document.getElementsByTagName('body')[0].className = "presentation";
+                    toggleTextPresentationMode();
+                    break;
+                case  79:
+                    e.preventDefault();
+                    toggleStyleDisplay(document.getElementById('options'));
+                    break;
                 }
 
             });
-
 
             // Bind opening help
             document.getElementsByTagName('body')[0].addEventListener('keydown', function (e) {

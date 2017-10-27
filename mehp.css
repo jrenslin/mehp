@@ -70,6 +70,22 @@ body > div#help dl dt + dd   { min-width: calc(100% - 12em); }
 body > div#help kbd          { background: #eee; color: #000; padding: 0.3em; }
 
 /* ---------
+|  Options area
+|----------- */
+
+body > div#options     { position: fixed; left: 50%; bottom: 0px; transform: translate(-50%); display: none;
+                         font-size: 3.5vh; }
+body > div#options > * { display: inline-block; padding: 0.2em 0.5em; }
+
+body > div#options > div#optionsOpenerOwnTab:before           { content: "\01F5D4"; }
+body > div#options > div#optionsOpenerTextPresentation:before { content: "\01F5B9"; }
+body > div#options > div#optionsOpenerHelp:before             { content: "?"; }
+
+@media (max-width:55em) {
+    body > div#options { display: block; }
+}
+
+/* ---------
 |  Slide layout
 |
 |  Different slide layouts are set by classes set on sections
