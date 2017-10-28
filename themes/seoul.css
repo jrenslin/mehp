@@ -42,11 +42,22 @@
 
 body { background: #25262e; color: #EDE4D5; font-family: Quicksand; }
 
-h1, h2, h3, h4, h5, h6       { font-weight: normal; }
+h1, h2, h3, h4, h5, h6       { font-weight: normal; width: 60%; line-height: initial; }
+h1                           { font-size: 1.30em; }
+h2                           { font-size: 1.25em; }
+h3                           { font-size: 1.20em; }
+h4                           { font-size: 1.15em;}
+h5                           { font-size: 1.10em; }
 a                            { color: #FC7921; text-decoration: none; }
 cite                         { color: #F7B65A; font-style: normal; }
 body.presentation aside      { animation: fade-in 0.4s; background: #5E5E5E; padding: 3vh 3vw !important;
                                border: 0.3em solid #8E8238; }
+dfn                          { font-style: normal; }
+
+blockquote                   { font-family: mono, serif; font-weight: lighter; padding: 1em 0px; }
+blockquote cite              { float: right; }
+blockquote cite:before       { content: "\002014 "; }
+blockquote:after             { clear: both; }
 
 body > div#help              { animation: fade-in 0.4s;  }
 body > div#options           { background: rgba(255,255,255, 0.1); border-radius: 0.3em 0.3em 0px 0px; }
@@ -74,12 +85,17 @@ body.text > section  { line-height: 1.5em; }
 body.text li > aside { display: block; padding: 0.5em 0px; }
 
 /* Presentation View */
-body.presentation               { font-size: 5vh; }
+body.presentation               { font-size: 2.8em; }
 body.presentation > section     {  }
 body.presentation > section > * {  }
 
 body.presentation > section li  { padding: 0.1em 0px; }
-body.presentation h1            { text-align: center; }
+body.presentation h1,
+body.presentation h2,
+body.presentation h3,
+body.presentation h4,
+body.presentation h5,
+body.presentation h6            { text-align: center; }
 
 @media (max-width:55em) {
     body.presentation           { font-size: 4.5vw; }
@@ -101,11 +117,26 @@ body.presentation > section.oneElement > span      { text-align: center; }
 body.presentation > section.oneElementHeadline > * {  }
 body.presentation > section.twoElementHeadline > * {  }
 
+body.presentation > section.quote > *                  { left: 65%; font-size: 0.8em; }
+body.presentation > section.quote:before               { content: "\""; position: absolute; left: 15%; top: 15%;
+                                                         font-size:15vh; }
+body.presentation > section.smaller                    { font-size: 1em; }
+body.presentation > section.oneElement.moveRight > *   { left: 65%;  }
+
+body.presentation > section.fixedTopQuarter > *        { top: 25%; transform: translate(-50%); }
+body.presentation > section.fixedTopThird > *          { top: 33%; transform: translate(-50%); }
+
+body.presentation > section.oneElement > dl            { left: 40%;  transform: translate(0%); }
+body.presentation > section.oneElement > dl > dt       { position: absolute; right: 100%; color: #888; }
+body.presentation > section.oneElement > dl > dd       { display: block; padding-left: 3em; }
+body.presentation > section.oneElement > dl > dd > ul  { padding: 0px; margin: 0px 0px 0px 0px; }
+
 /* ---------
 |  Sections / Slide Layouts
 |
 |  e.g. body.presentation > section.AlternativeBG { background: #fa0; }
 |----------- */
+
 
 /* ---------
 |  Animations
@@ -119,8 +150,17 @@ body.presentation > section.twoElementHeadline > * {  }
 }
 
 /* ---------
-|  This special case
+|  This Special Case
 |----------- */
+
+/* ---------
+|  Integration with Citations
+|----------- */
+
+body cite    { position: initial; }
+h2 cite      { display: block; font-size: 0.7em; }
+h3 cite      { display: block; font-size: 0.7em; }
+body.presentation cite div.citeFullText { min-width: initial; font-size:0.7em; }
 
 div#Sources                            { position: relative; }
 div#Sources div.sourcesOptions         { position: absolute; right: 0px; }
@@ -131,3 +171,24 @@ div#Sources li:target                  { color: #A4A501; }
 
 body.presentation div#Sources          { display: none; }
 
+/* ---------
+|  Glossary
+|----------- */
+
+body > div#options > div#optionsOpenerGlossary:before { content: "\01F4D3"; }
+
+div#glossary { position: fixed; left: 50%; top: 50%; display: none; transform: translate(-50%, -50%);
+               max-height:76vh; padding: 2vh 2vw; background: #5E5E5E; border: 0.3em solid #589FBF;
+               font-size: initial; z-index: 1000;
+               overflow-y: auto; animation: fade-in 0.4s; }
+
+div#glossary dl    { display: flex; flex-wrap: wrap; }
+div#glossary dl dt { display: inline-block; min-width: 199px; max-width: 200px; padding:0.1em; font-style: italic; }
+div#glossary dl dd { display: inline-block; max-width: calc(100% - 210px - 1em); padding:0.3em; margin: 0em 0em 1em 0.3em; text-align: justify; }
+div#glossary dl dd:last-child { margin-bottom: 0px; }
+div#glossary dl dd:hover,
+div#glossary dl dt:hover + dd { background: rgba(255,255,255,0.05); border-radius: 0.5em; }
+
+@media (max-width:55em) {
+    div#glossary { top: -0.3em; transform: translate(-50%); width: 86%; height: 80vh; }
+}

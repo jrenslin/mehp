@@ -67,7 +67,7 @@ div#next           { left: initial; right: 0px; }
 |  Help
 |----------- */
 
-body > div#help              { position: absolute; left: 50%; top: 50%; display: none; transform: translate(-50%, -50%);
+body > div#help              { position: fixed; left: 50%; top: 50%; display: none; transform: translate(-50%, -50%);
                                padding: 4vh 4vw; background: rgba(0, 0, 0, 1); font-size: initial; }
 body > div#help dl           { display: flex; flex-wrap: wrap; }
 body > div#help dl dt,
