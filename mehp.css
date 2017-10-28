@@ -32,6 +32,12 @@ body.presentation aside {  display: none;
                            position: absolute; left: 50%; top: 50%; display: none; transform: translate(-50%, -50%);
                            padding: 4vh 4vw; background: rgba(0, 0, 0, 1); font-size: initial; }
 
+@media print {
+    body.presentation              { font-size: 40pt; }
+    body.presentation > section    { display: block;  position: relative; }
+}
+
+
 /* ---------
 |  Speaker view
 |----------- */
@@ -86,12 +92,16 @@ body > div#options > div#optionsOpenerHelp:before             { content: "?"; }
     body > div#options { display: block; }
 }
 
+@media print {
+    body > div#options { display: none; }
+}
+
 /* ---------
 |  Table of contents
 |----------- */
 
 body > div#toc        { position: fixed; left: 0%; top: 0%; display: none; height: calc(100% - 8vh);
-                        padding: 4vh 3em; background: rgba(0, 0, 0, 1); font-size: initial; overflow: hidden; }
+                        padding: 4vh 3em; background: rgba(0, 0, 0, 1); font-size: initial; overflow-y: auto; }
 body > div#toc:before { content: "Table of Contents"; display: block; padding-bottom: 1em; font-size: 1.5em; }
 body > div#toc > a    { display: block; padding: 0.5em 1em; margin-left: -0.9em; font-size: 1.2em; }
 body > div#toc > a.H2 {  }
@@ -99,6 +109,8 @@ body > div#toc > a.H3 { padding-left: 1.5em }
 body > div#toc > a.H4 { padding-left: 2.0em }
 body > div#toc > a.H5 { padding-left: 2.5em }
 body > div#toc > a.H6 { padding-left: 3.0em }
+
+body > div#toc > a.H3:before { content: "\0025AA"; margin-right: 0.5em; }
 
 /* ---------
 |  Slide layout

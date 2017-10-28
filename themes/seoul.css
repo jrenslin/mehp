@@ -44,6 +44,7 @@ body { background: #25262e; color: #EDE4D5; font-family: Quicksand; }
 
 h1, h2, h3, h4, h5, h6       { font-weight: normal; }
 a                            { color: #FC7921; text-decoration: none; }
+cite                         { color: #F7B65A; font-style: normal; }
 body.presentation aside      { animation: fade-in 0.4s; background: #5E5E5E; padding: 3vh 3vw !important;
                                border: 0.3em solid #8E8238; }
 
@@ -67,11 +68,25 @@ body.presentation.speakerView { background: #25262e; }
 body.presentation.speakerView > section { border: #4E4E4E solid 0.3em; }
 body.presentation.speakerView > section:target { border-color: #589FBF; }
 
-aside {display: block;}
+/* Text mode */
+aside                { display: block; }
+body.text > section  { line-height: 1.5em; }
+body.text li > aside { display: block; padding: 0.5em 0px; }
 
-body.presentation      { font-size: 5vh; }
-body.presentation > section       {  }
-body.presentation > section > *   {  }
+/* Presentation View */
+body.presentation               { font-size: 5vh; }
+body.presentation > section     {  }
+body.presentation > section > * {  }
+
+body.presentation > section li  { padding: 0.1em 0px; }
+body.presentation h1            { text-align: center; }
+
+@media (max-width:55em) {
+    body.presentation           { font-size: 4.5vw; }
+}
+@media print {
+    body.presentation           { font-size: 20pt; }
+}
 
 body.presentation .containsAside:hover { background: rgba(255,255,255,0.05); }
 
@@ -79,7 +94,10 @@ body.presentation .containsAside:hover { background: rgba(255,255,255,0.05); }
 |  Sections / Slide Layouts
 |----------- */
 
+body.presentation > section.oneElement             { font-size: 1.2em; }
 body.presentation > section.oneElement > *         {  }
+body.presentation > section.oneElement > h2        { text-align: center; }
+body.presentation > section.oneElement > span      { text-align: center; }
 body.presentation > section.oneElementHeadline > * {  }
 body.presentation > section.twoElementHeadline > * {  }
 
@@ -99,3 +117,17 @@ body.presentation > section.twoElementHeadline > * {  }
     from {opacity:0.4;}
     to {opacity:1.0;}
 }
+
+/* ---------
+|  This special case
+|----------- */
+
+div#Sources                            { position: relative; }
+div#Sources div.sourcesOptions         { position: absolute; right: 0px; }
+div#Sources div.sourcesOptions a       { padding: 0.4em; background: #5E5E5E; border: 0.1em solid #FC7921; }
+div#Sources div.sourcesOptions a:hover { border: 0.1em solid #C14E4B; }
+div#Sources ul                         { padding: 1em 0px; margin: 0px; list-style: none; }
+div#Sources li:target                  { color: #A4A501; }
+
+body.presentation div#Sources          { display: none; }
+
