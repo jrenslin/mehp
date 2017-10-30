@@ -17,7 +17,11 @@ Moving to a HiDPI screen, libreoffice impress started to break every time I open
 
 All positioning and styling is done in CSS files. Two CSS files should be loaded: one general one (`mehp.css`) and one for the theme (e.g. `seoul.css`). 
 
+<<<<<<< HEAD
 Note that I am using mehp together with another JS tool I wrote for processing references and definitions (<dfn> tags). Hence, the default theme also contains some styles for this. These are however grouped at the very end of the file and should be easy to identify.
+=======
+To use a custom theme, just replace `<path>/themes/seoul.css` with your own theme. For writing one, you may either copy the existing, default theme or copy `themes.css` and start from scratch.
+>>>>>>> 4cf108d24476967f3585cffbce2a1940bf449038
 
 ## Usage
 
