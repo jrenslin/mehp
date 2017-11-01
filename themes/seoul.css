@@ -42,7 +42,7 @@
 
 body { background: #25262e; color: #EDE4D5; font-family: Quicksand; }
 
-h1, h2, h3, h4, h5, h6       { font-weight: normal; width: 60%; line-height: initial; }
+h1, h2, h3, h4, h5, h6       { font-weight: normal; width: 60vw; line-height: initial; }
 h1                           { font-size: 1.30em; }
 h2                           { font-size: 1.25em; }
 h3                           { font-size: 1.20em; }
@@ -97,6 +97,8 @@ body.presentation h4,
 body.presentation h5,
 body.presentation h6            { text-align: center; }
 
+
+
 @media (max-width:55em) {
     body.presentation           { font-size: 4.5vw; }
 }
@@ -105,6 +107,15 @@ body.presentation h6            { text-align: center; }
 }
 
 body.presentation .containsAside:hover { background: rgba(255,255,255,0.05); }
+
+/* ---------
+|  General options applying only to presentation view
+|----------- */
+
+body.presentation .twoElements.comparison { background: linear-gradient(left, rgba(0,0,0,0) 50%, #4E4E4E 50%);
+                                            background: -webkit-linear-gradient(left, rgba(0,0,0,0) 50%, #4E4E4E 50%); }
+body.presentation .centered               { text-align: center; }
+body.presentation .greyedOut              { color: #888; }
 
 /* ---------
 |  Sections / Slide Layouts
