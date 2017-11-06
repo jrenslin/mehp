@@ -260,7 +260,7 @@ function mehp () {
 
     function setHash() {
         if(!window.location.hash) {
-		        window.location.hash = "0";
+            history.pushState(null, null, '#0');
         }
     }
 
