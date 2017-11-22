@@ -10,6 +10,9 @@ body { margin: 0px; padding: 0px; z-index: 1; }
 |----------- */
 
 a     {  }
+figure   { position: relative; max-height: 80vh; }
+figure > figcaption { position: absolute; bottom: 0px; right: 0px; padding: 0.5em; background: rgba(0,0,0,0.8); font-size: 12px; }
+figure > img        { max-height: 80vh; }
 
 .toggledVisible { display: block !important; z-index: 10 !important; }
 
